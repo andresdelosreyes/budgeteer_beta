@@ -2,12 +2,14 @@ Ext.define("login.view.Main", {
     extend: 'Ext.tab.Panel',
     requires: ['Ext.TitleBar'],
     config: {
-        tabBarPosition: 'bottom',
-
+        //tabBarPosition: 'bottom',
+		
         items: [
 			{
 				xtype: 'Loginform',
 			}
         ]
+		
+		
     }
 });

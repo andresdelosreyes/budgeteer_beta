@@ -6,16 +6,16 @@ Ext.define('login.view.HomeP', {
 
         items: [
 			{
-				xtype: 'splash',
+				xtype: 'BudgetList',
 			},
 			{
 				xtype: 'profile',
 			},
 			{
-				xtype: 'EnterExpense',
-			},
-			{
 				xtype: 'ExpenseList',
+			},			
+			{
+				xtype: 'EnterExpense',
 			}
         ]
     }

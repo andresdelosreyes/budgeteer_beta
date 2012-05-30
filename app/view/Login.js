@@ -11,7 +11,9 @@ Ext.define('login.view.Login', {
 	config: {
 		title: 'Login',
 		iconCls: 'user',
-		url: './resources/login.php',
+		//url: './resources/login.php',
+		url: 'http://andressencha.herobo.com/login/resources/php/login.php',
+		cls: 'panelBackground',
 		items: [
 			{
 				xtype: 'fieldset',
@@ -40,16 +42,17 @@ Ext.define('login.view.Login', {
 					var ob = login.view.HomeP.create({
 						scrollable: true
 					});
-					
 					Ext.Viewport.add(ob);
 					ob.show();
 					this.up('Loginform').destroy();								
 					
-					/*
 					
+					//
+					/*
 					var values = this.up('Loginform').getValues();
 					Ext.Ajax.request({
-						url: './resources/php/login.php',
+						//url: './resources/php/login.php',
+						url: 'http://andressencha.herobo.com/login/resources/php/login.php',
 						method: 'post',
 						params: values,
 					scope: this, 
@@ -79,9 +82,8 @@ Ext.define('login.view.Login', {
 							}
 						}
 					});
-					
+					//
 					*/
-					
 				}
 			}
 		]

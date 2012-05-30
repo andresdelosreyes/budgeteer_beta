@@ -25,10 +25,45 @@ Ext.define('login.view.Profile', {
 						label: 'Name:'
 					},
 					{
+						xtype: 'emailfield',
+						name: 'email',
+						label: 'Email:'
+					},
+					
+					{
+						xtype: 'button',
+						text: 'Select Pic',
+						ui: 'confirm',
+						handler: function() {
+							//Ext.Msg.alert('Saving User', 'Pleas wait', Ext.emptyFn);
+							
+							
+							Ext.device.Camera.capture({
+								success: function(image) {
+									//imageView.setSrc(image);
+									Ext.create('login.view.PreviewImage', {
+										title: 'Test photo',
+										description: 'Testing a camera capture',    
+										src: image,
+										fullscreen: true
+									});
+								},
+								quality: 75,
+								width: 200,
+								height: 200,
+								destination: 'data'
+							});
+						}
+
+					}
+					/*
+					{
 						xtype: 'passwordfield',
 						name: 'password',
 						label: 'Password:'
-					}			
+					}
+					*/
+					
 				]
 			},
 			{
