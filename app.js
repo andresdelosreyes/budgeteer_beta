@@ -34,7 +34,17 @@ Ext.application({
 
         // Initialize the main view
         //Ext.Viewport.add(Ext.create('login.view.Main'));
-		Ext.Viewport.add(Ext.create('login.view.Login'));
+		var loginstatus = localStorage.getItem("loginstatus");
+		console.log(loginstatus);
+		if (loginstatus == "true")
+		{
+			Ext.Viewport.add(Ext.create('login.view.HomeP'));
+		}
+		else
+		{
+			Ext.Viewport.add(Ext.create('login.view.Login'));
+		}
+		
     },
 
     onUpdated: function() {

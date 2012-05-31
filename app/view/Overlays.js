@@ -140,7 +140,23 @@ Ext.define('login.view.Overlays', {
 
                     this.picker.show();
                 }
-            }
+            },
+			{
+				xtype: 'button',
+				text: 'LogOut',
+				ui: 'confirm',
+				handler: function() {
+					//Ext.Msg.alert('B', 'Pleas wait', Ext.emptyFn);
+					localStorage.setItem("loginstatus", "false");
+					localStorage.setItem("username", null);
+					var ob = login.view.Login.create({
+						scrollable: true
+					});
+					Ext.Viewport.add(ob);
+					ob.show();
+					this.up('HomeP').destroy();												
+				}
+			}				
         ]
     }
 });

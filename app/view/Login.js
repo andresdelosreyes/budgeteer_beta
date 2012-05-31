@@ -38,7 +38,10 @@ Ext.define('login.view.Login', {
 				text: 'send',
 				ui: 'confirm',
 				handler: function() {
-					
+					//gets the values from the form
+					var values = this.up('Loginform').getValues();
+					localStorage.setItem("loginstatus", "true");
+					localStorage.setItem("username", values.username);					
 					var ob = login.view.HomeP.create({
 						scrollable: true
 					});
@@ -49,7 +52,6 @@ Ext.define('login.view.Login', {
 					
 					//
 					/*
-					var values = this.up('Loginform').getValues();
 					Ext.Ajax.request({
 						//url: './resources/php/login.php',
 						url: 'http://andressencha.herobo.com/login/resources/php/login.php',
