@@ -1,67 +1,78 @@
+//extend: 'Ext.form.Panel',
 Ext.define('login.view.ExpenseList', {
-	extend: 'Ext.form.Panel',
+	extend: 'Ext.Container',
 	xtype: 'ExpenseList',
-	
-	requires: [
-		'Ext.field.Select',
-		'Ext.field.Number',
-		'Ext.field.DatePicker'
-	],
-	
-	config: {
-		title: 'Expense List',
-		iconCls: 'organize',
-		cls: 'home',
-		scrollable: true,
-		styleHtmlContent: true,
+	requires: ['Ext.ux.touch.grid.View'],
+    config: {
+		title: 'Title',
 		
+        layout: {
+            type : 'vbox',
+            pack : 'center',
+            align: 'stretch'
+        },
 		
+        //cls   : 'card1',
+		/*
+		defaults: {
+            xtype: 'container',
+            flex : 1,
+            layout: {
+                type : 'hbox',
+                align: 'middle'
+            },
+            defaults: {
+                xtype : 'button',
+                flex  : 1,
+                margin: 10
+            }
+        },
+		*/
+		//main vbox
+		//layout: 'vbox',
 		items: [
 			{
-				xtype: 'fieldset',
-				title: 'Filter by:',
-				//instructions: 'Please enter your mail and password',
-				
+				//hbox title
+				flex: 1,
+				layout: 'hbox',
 				items: [
 					{
-						xtype: 'selectfield',
-						label: 'Category:',
-						options: [
-							{text: 'Food',  value: '1'},
-							{text: 'Gas', value: '2'},
-							{text: 'Clothes',  value: '3'},
-							{text: 'Entertainment', value: '4'},
-							{text: 'Utilities',  value: '5'},
-							{text: 'Rent', value: '6'},
-							{text: 'Other', value: '99'}
-
-						]
+						xtype: 'panel',
+						html: 'Expense List',
+						flex: 1
 					},
 					{
-						xtype: 'datepickerfield',
-						label: 'Start Date',
-						name: 'sdate',
-						value: new Date()
-					},
-					{
-						xtype: 'datepickerfield',
-						label: 'End Date',
-						name: 'edate',
-						value: new Date()
+						xtype: 'panel',
+						html: 'Date',
+						flex: 1
 					}
 				]
 			},
 			{
-				xtype: 'button',
-				text: 'Filter',
-				ui: 'confirm',
-				handler: function() {
-					Ext.Msg.alert('Filtering...', 'Pleas wait', Ext.emptyFn);
-				}
-			}			
-			
-		]		
-		
+				flex: 6,
+                xtype   : 'touchgridpanel',
+                title   : 'Grid',
+                store   : 'Grid',
+                columns : [
+                    {
+                        header    : 'Date',
+                        dataIndex : 'date',
+                        width     : '20%'
+                    },
+                    {
+                        header    : 'Category',
+                        dataIndex : 'category',
+                        width     : '50%'
+                    },
+                    {
+                        header    : 'Amount',
+                        dataIndex : 'amount',
+                        width     : '30%'
+                    }					
+                ]
+			}
 
+		
+		]
 	}
-});
+});		

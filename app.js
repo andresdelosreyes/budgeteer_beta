@@ -1,10 +1,13 @@
+Ext.Loader.setPath('Ext.ux.touch.grid', './Ext.ux.touch.grid');
 Ext.application({
     name: 'login',
 
     requires: [
         'Ext.MessageBox'
     ],
-
+    stores : [
+        'Grid'
+    ],
     views: ['Main', 'Login', 'HomeP', 'Profile', 'EnterExpense', 'ExpenseList', 'splash', 'Overlays', 'Budget'],
 
     icon: {

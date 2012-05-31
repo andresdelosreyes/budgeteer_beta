@@ -1,17 +1,31 @@
 Ext.define('login.view.splash', {
-	extend: 'Ext.Panel',
+	extend: 'Ext.tab.Panel',
 	xtype: 'splash',
-	
+	requires: ['Ext.ux.touch.grid.View'],
 	config: {
 		title: 'Splash',
 		iconCls: 'home',
 		cls: 'home',
 		scrollable: true,
-		styleHtmlContent: true,
+		//styleHtmlContent: true,
+		items: 
+			{
+                xtype   : 'touchgridpanel',
+                title   : 'Grid',
+                store   : 'Grid',
+                columns : [
+                    {
+                        header    : 'Text',
+                        dataIndex : 'text',
+                        width     : '60%'
+                    },
+                    {
+                        header    : 'Amount',
+                        dataIndex : 'amount',
+                        width     : '40%'
+                    }
+                ]		
+			}
 		
-		
-		html: [
-			'<img src="./resources/images/budgeteer.png" align=center/>'
-		].join("")		
 	}
 });	

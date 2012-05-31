@@ -18,7 +18,7 @@
 	 * @required
 	 * This is the version of your application.
 	 */
-	"versionString":"0.1",
+	"versionString":"0.1.1",
 
 	/**
 	 * @cfg {String} iconName
