@@ -2,10 +2,14 @@
 Ext.define('login.view.ExpenseList', {
 	extend: 'Ext.Container',
 	xtype: 'ExpenseList',
-	requires: ['Ext.ux.touch.grid.View'],
+	requires: [
+		'Ext.ux.touch.grid.View',
+		'Ext.ux.touch.grid.feature.Feature',
+		'Ext.ux.touch.grid.feature.Sorter'		
+	],
     config: {
-		title: 'Title',
-		
+		title: 'Expense List',
+		iconCls: 'bookmarks',
         layout: {
             type : 'vbox',
             pack : 'center',
@@ -53,6 +57,12 @@ Ext.define('login.view.ExpenseList', {
                 xtype   : 'touchgridpanel',
                 title   : 'Grid',
                 store   : 'Grid',
+				features   : [
+					{
+						ftype    : 'Ext.ux.touch.grid.feature.Sorter',
+						launchFn : 'initialize'
+					}
+				],				
                 columns : [
                     {
                         header    : 'Date',
@@ -62,12 +72,12 @@ Ext.define('login.view.ExpenseList', {
                     {
                         header    : 'Category',
                         dataIndex : 'category',
-                        width     : '50%'
+                        width     : '60%'
                     },
                     {
-                        header    : 'Amount',
+                        header    : '$',
                         dataIndex : 'amount',
-                        width     : '30%'
+                        width     : '20%'
                     }					
                 ]
 			}

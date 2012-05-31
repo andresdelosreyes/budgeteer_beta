@@ -9,7 +9,7 @@ Ext.define('login.view.EnterExpense', {
 	
 	config: {
 		title: 'Expense Entry',
-		iconCls: 'compose',
+		iconCls: 'add',
 		cls: 'home',
 		scrollable: true,
 		styleHtmlContent: true,

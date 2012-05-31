@@ -1,5 +1,5 @@
 Ext.define("login.view.Main", {
-    extend: 'Ext.Panel',
+    extend: 'Ext.tab.Panel',
     requires: ['Ext.TitleBar'],
     config: {
         //tabBarPosition: 'bottom',
