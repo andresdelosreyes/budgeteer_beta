@@ -1,102 +1,3 @@
-/*
-Ext.define('login.view.EnterExpense', {
-	//extend: 'Ext.Container',
-	extend: 'Ext.form.Panel',
-	xtype: 'EnterExpense',
-	requires: [
-		'Ext.ux.touch.grid.View',
-		'Ext.ux.touch.grid.feature.Feature',
-		'Ext.ux.touch.grid.feature.Sorter',
-		'Ext.field.Select',
-		'Ext.field.Number'		
-	],
-    config: {
-		title: 'Expense Entry',
-		iconCls: 'compose',
-		cls: 'home',
-		scrollable: true,
-		styleHtmlContent: true,		
-		/*
-        layout: {
-            type : 'vbox'
-        },
-		*/
-		/*
-		xtype: 'fieldset',
-		title: 'Enter Expense',
-		layout: 'vbox',
-		align : 'center',
-		//instructions: 'Please enter your mail and password',		
-		items: [
-			//{			
-				//layout: 'vbox',
-				//items: [
-					{
-						//hbox title
-						flex: 1,
-						layout: 'hbox',
-						items: [
-							{
-								xtype: 'panel',
-								html: 'Expense List',
-								flex: 1
-							},
-							{
-								xtype: 'panel',
-								html: 'Date',
-								flex: 1
-							}
-						]
-					},
-					{
-						flex: 1,
-						layout: 'hbox',
-						items: [
-							{
-								flex: 1,
-								html: '$'
-							},
-							{
-								xtype: 'numberfield',
-								name: 'amount',
-								minValue: 18
-							}
-						]
-
-					},
-					{
-						flex: 1,
-						xtype: 'selectfield',
-						label: 'Category:',
-						options: [
-							{text: 'Food',  value: '1'},
-							{text: 'Gas', value: '2'},
-							{text: 'Clothes',  value: '3'},
-							{text: 'Entertainment', value: '4'},
-							{text: 'Utilities',  value: '5'},
-							{text: 'Rent', value: '6'},
-							{text: 'Other', value: '99'}
-						]
-					},
-					{
-						flex: 3,
-						xtype: 'textareafield',
-						name: 'description'
-					}			
-				//]						
-			
-			
-			//}
-		]
-
-
-	}
-});		
-
-*/
-
-///////////////////////////////////////////////////////////////////////////////////
-
 Ext.define('login.view.EnterExpense', {
 	extend: 'Ext.form.Panel',
 	xtype: 'EnterExpense',
@@ -161,6 +62,76 @@ Ext.define('login.view.EnterExpense', {
 						text: 'Enter Description',
 						ui: 'confirm',
 						handler: function() {
+							if (!this.overlay) {
+								this.overlay = Ext.Viewport.add({
+									xtype: 'panel',
+									id: 'modalPanel',
+									modal: true,
+									hideOnMaskTap: true,
+									showAnimation: {
+										type: 'popIn',
+										duration: 250,
+										easing: 'ease-out'
+									},
+									hideAnimation: {
+										type: 'popOut',
+										duration: 250,
+										easing: 'ease-out'
+									},
+									centered: true,
+									width: Ext.os.deviceType == 'Phone' ? 260 : 400,
+									height: Ext.os.deviceType == 'Phone' ? 220 : 400,
+									styleHtmlContent: true,
+									/*
+									html: '<p>This is a modal, centered and floating panel. hideOnMaskTap is true by default so ' +
+										'we can tap anywhere outside the overlay to hide it.</p>',
+									*/
+									items: [
+										{
+											docked: 'top',
+											xtype: 'toolbar',
+											title: 'Overlay Title'
+										},
+										{
+											xtype: 'textareafield',
+											name: 'description',
+											id: 'description',
+											label: 'Description:',
+											placeHolder : 'Enter a description please...'
+										},
+										{
+											xtype: 'button',
+											text: 'Save',
+											ui: 'confirm',
+											handler: function() {
+												var value = this.getParent().getItems().items[1].getValue();
+												this.getParent().hide();												
+												var temp = this.getParent().getParent().getActiveItem().down('#DescriptionId');
+												temp.setValue(value);
+												//console.log(temp);
+											}
+										},
+										{
+											xtype: 'button',
+											text: 'Cancel',
+											ui: 'decline',
+											handler: function() {
+												this.getParent().hide();
+											}
+										}										
+										
+										
+									],
+									scrollable: true
+								});
+							}
+
+							this.overlay.show();
+						}
+						
+						//////////////////////////////////////////////////////////
+						/*
+						handler: function() {
 							var config = {xtype: 'textarea', value: 'test'};
 							Ext.Msg.prompt("Enter the Description", "", function(btn, text, config){
 								if (btn == 'ok'){
@@ -176,7 +147,10 @@ Ext.define('login.view.EnterExpense', {
 							//var morehelp = this.down('DescriptionText')[0];
 							//morehelp.setValue(help);
 							
-						}			
+						}
+						*/
+						///////////////////////////////////////////////////////
+						
 					}					
 
 					/*
